@@ -34,24 +34,21 @@ class MiniGames:
     def rock_paper_scissors(self):
         print("\nWelcome to Rock Paper Scissors!")
         options = ['rock', 'paper', 'scissors']
-        wins = 0
-        for _ in range(3):
-            user = input("Choose rock, paper, or scissors: ").lower()
-            if user not in options:
-                print("Invalid choice.")
-                continue
-            computer = random.choice(options)
-            print(f"Computer chose {computer}")
-            if user == computer:
-                print("It's a tie!")
-            elif (user == 'rock' and computer == 'scissors') or \
-                 (user == 'paper' and computer == 'rock') or \
-                 (user == 'scissors' and computer == 'paper'):
-                print("You win!")
-                wins += 1
-            else:
-                print("You lose!")
-        self.total_score += wins
+        user = input("Choose rock, paper, or scissors: ").lower()
+        if user not in options:
+            print("Invalid choice. Please choose rock, paper, or scissors.")
+            return
+        computer = random.choice(options)
+        print(f"Computer chose {computer}")
+        if user == computer:
+            print("It's a tie!")
+        elif (user == 'rock' and computer == 'scissors') or \
+             (user == 'paper' and computer == 'rock') or \
+             (user == 'scissors' and computer == 'paper'):
+            print("You win!")
+            self.total_score += 1
+        else:
+            print("You lose!")
 
     def trivia_pursuit(self):
         print("\nWelcome to Trivia Pursuit!")
@@ -76,18 +73,17 @@ class MiniGames:
         self.total_score += correct
 
     pokemon_binder_manager = PCB.PokemonBinderManager()
+    def pokemon_binder_manager(self):
+        self.pokemon_binder = []    
+        self.pokemon_binder_manager = PCB.PokemonBinderManager()
+        self.pokemon_binder_manager.run() 
     def add_pokemon_card(self):
         pokedex_number = input("Enter Pokedex number: ")
         if pokedex_number.isdigit():
             self.pokemon_binder.append(pokedex_number)
             print(f"Added Pokedex #{pokedex_number} to binder.")
         else:
-            print("Invalid Pokedex number.")
-    def pokemon_binder_manager(self):
-        print("\nWelcome to the Pokemon Binder Manager!")
-        self.pokemon_binder = []    
-        self.pokemon_binder_manager = PCB.PokemonBinderManager()
-        self.pokemon_binder_manager.run()   
+            print("Invalid Pokedex number.")  
         while True:
             print("\nPokemon Binder Menu:")
             print("1. Add Pokemon Card")
@@ -96,7 +92,7 @@ class MiniGames:
             print("4. Exit to Main Menu")
             choice = input("Choose an option: ").strip()
             if choice == '1':
-                name = input("Enter Pokemon name: ")
+                name = input("Enter Pokedox_number: ")
                 self.pokemon_binder.append(name)
                 print(f"{name} added to binder.")
             elif choice == '2':
