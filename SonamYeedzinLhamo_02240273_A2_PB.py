@@ -4,7 +4,6 @@ class PokemonBinder:
         self.max_pokedex = 1025
         self.cards_per_page = 64
         self.grid_size = 8  # 8x8 grid per page
-
     def calculate_position(self, pokedex_number):
         index = pokedex_number - 1
         page = index // self.cards_per_page + 1
